@@ -1,5 +1,0 @@
-# Roadmap
-
-- MVP
-- Beta
-- GA

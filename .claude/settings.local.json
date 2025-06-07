@@ -3,7 +3,15 @@
     "allow": [
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(git checkout:*)",
+      "Bash(gh auth:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(rm:*)",
+      "Bash(git commit:*)"
     ],
     "deny": []
   }
