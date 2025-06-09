@@ -12,6 +12,7 @@ export { TenantProvider, TenantContext } from './providers/TenantProvider';
 // ===== Authentication =====
 export { useAuth } from './hooks/useAuth';
 export { useRateLimit } from './hooks/useRateLimit';
+export { useSecurityMonitor } from './hooks/useSecurityMonitor';
 export { ProtectedRoute } from './components/ProtectedRoute';
 export { LoginForm } from './components/LoginForm';
 export { MFASetup } from './components/MFASetup';
@@ -19,6 +20,8 @@ export { MFAVerification } from './components/MFAVerification';
 export { authService } from './services/authService';
 export { mfaService } from './services/mfaService';
 export { jwtService } from './services/jwtService';
+export { securityMonitor } from './services/securityMonitor';
+export { dataMaskingService } from './services/dataMaskingService';
 // export type { AuthUser, AuthState, LoginCredentials } from './types/auth'; // TODO: 未実装
 
 // ===== Encryption =====
@@ -59,6 +62,8 @@ export { SecurityBadge } from './components/SecurityBadge';
 export { PasswordStrengthIndicator } from './components/PasswordStrengthIndicator';
 export { ConsentBanner } from './components/ConsentBanner';
 export { DataPrivacySettings } from './components/DataPrivacySettings';
+export { SecurityDashboard } from './components/SecurityDashboard';
+export { MaskedDataView } from './components/MaskedDataView';
 
 // ===== Common Components =====
 export { ErrorMessage } from './components/common/ErrorMessage';
