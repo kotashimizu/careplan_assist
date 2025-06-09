@@ -11,9 +11,14 @@ export { TenantProvider, TenantContext } from './providers/TenantProvider';
 
 // ===== Authentication =====
 export { useAuth } from './hooks/useAuth';
+export { useRateLimit } from './hooks/useRateLimit';
 export { ProtectedRoute } from './components/ProtectedRoute';
 export { LoginForm } from './components/LoginForm';
+export { MFASetup } from './components/MFASetup';
+export { MFAVerification } from './components/MFAVerification';
 export { authService } from './services/authService';
+export { mfaService } from './services/mfaService';
+export { jwtService } from './services/jwtService';
 // export type { AuthUser, AuthState, LoginCredentials } from './types/auth'; // TODO: 未実装
 
 // ===== Encryption =====
@@ -77,8 +82,12 @@ export { SECURITY_LEVELS } from './constants/security';
 export { ERROR_MESSAGES } from './constants/errorMessages';
 export { COMPLIANCE_STANDARDS } from './constants/compliance';
 
+// ===== Middleware =====
+export { rateLimiter, createRateLimitMiddleware } from './middleware/rateLimiter';
+
 // ===== Type Exports =====
 export type { ValidationResult, PasswordValidationResult, EmailValidationResult } from './types/validation';
+export type { MFAMethod, MFASetupResult, MFAVerificationResult, MFAConfig } from './types/mfa';
 
 // ===== Types (Additional) =====
 // export type {

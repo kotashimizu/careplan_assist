@@ -49,8 +49,12 @@
   },
   "dependencies": {
     "crypto-js": "^4.1.1",
-    "uuid": "^9.0.0",
-    "date-fns": "^2.29.3"
+    "date-fns": "^2.29.3",
+    "express-rate-limit": "^7.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "qrcode": "^1.5.4",
+    "speakeasy": "^2.0.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.0",
@@ -59,9 +63,12 @@
     "@rollup/plugin-typescript": "^11.0.0",
     "@types/crypto-js": "^4.1.1",
     "@types/jest": "^29.4.0",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^18.0.0",
+    "@types/qrcode": "^1.5.5",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@types/speakeasy": "^2.0.10",
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
