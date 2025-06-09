@@ -1,0 +1,81 @@
+{
+  "name": "@your-org/secure-toolkit",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "包括的なセキュリティツールキット - 認証、暗号化、監査ログ、テナント設定",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "security",
+    "authentication",
+    "encryption",
+    "tenant",
+    "multi-tenant",
+    "audit-log",
+    "react",
+    "typescript",
+    "hipaa",
+    "gdpr",
+    "compliance"
+  ],
+  "author": "Your Organization",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/secure-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/secure-toolkit/issues"
+  },
+  "homepage": "https://github.com/your-org/secure-toolkit#readme",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "uuid": "^9.0.0",
+    "date-fns": "^2.29.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/crypto-js": "^4.1.1",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/uuid": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-react": "^7.32.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.4.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "rollup": "^3.10.0",
+    "rollup-plugin-dts": "^5.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "ts-jest": "^29.0.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.9.0"
+  }
+}
