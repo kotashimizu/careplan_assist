@@ -1,0 +1,262 @@
+# ケアチェックアシスト - AIコード生成用コンテキスト
+
+## プロジェクト概要
+- **製品名**: CareCheck Assist（ケアチェックアシスト）
+- **目的**: 福祉事業所向け業務支援SaaSシステム
+- **対象ユーザー**: 
+  - 介護施設職員（現場スタッフ）
+  - 施設管理者
+  - 事業所運営者
+  - SaaS管理者（スーパー管理者）
+
+## 技術スタック
+
+### フロントエンド
+- **Framework**: React 18 + TypeScript 5
+- **Styling**: Tailwind CSS 3
+- **Routing**: React Router v6
+- **アイコン**: Lucide React
+- **状態管理**: React Context API
+- **日付処理**: date-fns
+- **PDF生成**: jspdf + html2canvas
+
+### バックエンド・インフラ
+- **BaaS**: Supabase
+  - Database: PostgreSQL
+  - Authentication: Supabase Auth
+  - Storage: Supabase Storage
+  - Realtime: WebSocket
+- **Hosting**: Vercel
+- **環境管理**: Vite
+
+### AI・外部API
+- **AI分析**: Google Gemini API (@google/generative-ai)
+- **音声処理**: （将来実装予定）
+
+## アーキテクチャ設計
+
+### 環境構成（3層構造）
+1. **開発環境** (Development)
+   - ローカルSupabase
+   - デモモード利用可能
+   - `.env` ファイル使用
+
+2. **ステージング環境** (Staging)
+   - クラウドSupabase（専用インスタンス）
+   - 本番同等の構成
+   - `.env.staging` → `.env` にコピーして使用
+
+3. **本番環境** (Production)
+   - クラウドSupabase（本番インスタンス）
+   - 完全なセキュリティ設定
+   - Vercel環境変数使用
+
+### セキュリティ設計
+- **認証**: Supabase Auth + カスタムRBAC
+- **認可**: Row Level Security (RLS)
+- **暗号化**: クライアントサイド暗号化（機密データ）
+- **監査**: 全操作のログ記録
+- **データ保護**: GDPR/個人情報保護法準拠
+
+## プロジェクト構造
+
+```
+carecheck_assist/
+├── components/       # UIコンポーネント
+│   ├── admin/        # 管理者向けコンポーネント
+│   ├── auth/         # 認証関連コンポーネント
+│   ├── checklist/    # チェックリスト関連
+│   ├── handover/     # 引継ぎ関連
+│   ├── layout/       # レイアウトコンポーネント
+│   ├── schedule/     # スケジュール関連
+│   ├── supportPlans/ # 支援計画関連
+│   ├── ui/           # 汎用UIコンポーネント
+│   └── users/        # ユーザー関連
+├── contexts/         # Reactコンテキスト
+│   ├── AuthContext.tsx       # 認証管理
+│   ├── OrganizationContext.tsx # 組織管理
+│   └── SecurityContext.tsx    # セキュリティ管理
+├── database/         # データベース関連
+│   ├── migrations/   # DBマイグレーション
+│   └── *.sql        # SQLスキーマファイル
+├── docs/             # ドキュメント
+│   ├── SUPABASE_AUTH_TROUBLESHOOTING_GUIDE.md
+│   ├── ENVIRONMENT_SETUP_CHECKLIST.md
+│   └── FEATURE_SPECIFICATIONS/
+├── hooks/            # カスタムフック
+├── pages/            # ページコンポーネント
+├── scripts/          # ユーティリティスクリプト
+│   └── check_environment.js  # 環境診断ツール
+├── services/         # APIサービス・ビジネスロジック
+│   ├── supabaseClient.ts    # Supabaseクライアント
+│   ├── authValidator.ts     # 認証バリデーション
+│   └── assessmentAnalyzer.ts # AI分析サービス
+├── types/            # TypeScript型定義
+└── utils/            # ユーティリティ関数
+```
+
+## ユーザーロールと権限
+
+### ロール階層
+1. **SUPER_ADMIN**: SaaS全体管理者
+   - 全テナントの管理
+   - 課金・請求管理
+   - システム設定
+
+2. **ADMIN**: 事業所管理者
+   - 事業所内の全権限
+   - スタッフ管理
+   - 設定変更
+
+3. **STAFF**: 現場スタッフ
+   - 日常業務の実行
+   - 記録の作成・編集
+   - レポート閲覧
+
+4. **USER**: 一般ユーザー
+   - 限定的なアクセス
+   - 閲覧のみ
+
+## 主要機能一覧
+
+### 現場業務支援機能
+1. **利用者管理**
+   - 基本情報管理
+   - サービス利用履歴
+   - 個別ニーズ記録
+
+2. **日々の記録**
+   - サービス実施記録
+   - バイタルチェック
+   - 食事・排泄記録
+   - 特記事項
+
+3. **アセスメント支援**
+   - 面談記録のAI分析
+   - 課題の自動抽出
+   - 支援方針の提案
+
+4. **個別支援計画**
+   - AI支援による計画書作成
+   - 目標設定支援
+   - 進捗管理
+
+5. **スケジュール管理**
+   - シフト作成
+   - サービス予定管理
+   - リマインダー機能
+
+### 管理・分析機能
+1. **レポート生成**
+   - 月次報告書
+   - 利用実績集計
+   - 各種統計分析
+
+2. **品質管理**
+   - サービス品質指標
+   - インシデント管理
+   - 改善提案
+
+3. **請求業務支援**
+   - 国保連データ生成
+   - 請求書作成
+   - 入金管理
+
+### SaaS管理機能（SUPER_ADMIN専用）
+1. **テナント管理**
+   - 新規顧客登録
+   - プラン管理
+   - 利用状況監視
+
+2. **収益管理**
+   - MRR/ARR追跡
+   - 解約率分析
+   - 収益予測
+
+3. **サポート管理**
+   - チケット対応
+   - ナレッジベース
+   - 顧客満足度管理
+
+## 開発ガイドライン
+
+### コード規約
+- **命名規則**: 
+  - コンポーネント: PascalCase
+  - 関数: camelCase
+  - 定数: UPPER_SNAKE_CASE
+  - ファイル: コンポーネントはPascalCase、その他はcamelCase
+
+- **TypeScript**:
+  - 厳格な型定義（any禁止）
+  - インターフェース優先
+  - 型推論の活用
+
+### 品質基準
+- **パフォーマンス**: 
+  - Lighthouse Score 90以上
+  - 初期表示3秒以内
+  - メモ化の適切な使用
+
+- **アクセシビリティ**:
+  - WCAG 2.1 AA準拠
+  - キーボード操作対応
+  - スクリーンリーダー対応
+
+- **セキュリティ**:
+  - 入力値検証必須
+  - XSS対策
+  - CSRF対策
+
+### テスト戦略
+- 単体テスト: Jest + React Testing Library
+- 統合テスト: Cypress（予定）
+- E2Eテスト: Playwright（予定）
+
+## 重要な注意事項
+
+### 環境設定
+1. **環境変数の管理**
+   - `.env.local`と`.env.development`は使用しない
+   - 環境別の設定は`.env`に集約
+   - `npm run check-env`で診断
+
+2. **デモモード設定**
+   - 本番環境では必ず無効化
+   - forceDemo/forceDemoModeの確認必須
+
+3. **Supabase設定**
+   - RLSポリシーの適切な設定
+   - staffテーブルのauth_id必須
+   - 環境別のURL/Key管理
+
+### トラブルシューティング
+- 詳細は`docs/SUPABASE_AUTH_TROUBLESHOOTING_GUIDE.md`参照
+- 環境構築は`docs/ENVIRONMENT_SETUP_CHECKLIST.md`参照
+- `npm run check-env`で自動診断
+
+### セキュリティ
+- APIキーの直接埋め込み禁止
+- 個人情報のログ出力禁止
+- 本番データのローカル保存禁止
+
+## 今後の展開予定
+
+### Phase 1（現在）
+- 基本機能の安定化
+- セキュリティ強化
+- SaaS基盤構築
+
+### Phase 2（計画中）
+- AI機能の拡充
+- 音声入力対応
+- モバイルアプリ開発
+
+### Phase 3（将来構想）
+- API公開
+- サードパーティ連携
+- 国際化対応
+
+---
+
+このコンテキストドキュメントは、AI開発支援ツールやチームメンバーがプロジェクトを理解するための包括的なガイドです。定期的に更新し、プロジェクトの現状を反映させてください。

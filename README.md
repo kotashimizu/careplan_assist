@@ -47,6 +47,10 @@ Next.js + Supabase + Vercel構成で、すぐに開発を始められます。
 - [ユーザーズマニュアル](USER_MANUAL.md)
 - [AI向け設定](.claude/PROJECT_INSTRUCTIONS.md)
 
+## 🔐 セキュリティ機能
+- [Secure Toolkit クイックスタート](docs/SECURE_TOOLKIT_QUICK_START.md) 🆕 5分でセキュリティ実装！
+- [Secure Toolkit 詳細ガイド](docs/SECURE_TOOLKIT_GUIDE.md) - 医療機関レベルのセキュリティ
+
 ## 💬 質問・相談大歓迎！
 
 プログラミングが初めての方も安心してください。
