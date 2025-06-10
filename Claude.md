@@ -701,34 +701,35 @@ Mac ユーザーの場合：
 ```
 docs/
 ├── README.md                    # ドキュメント全体のインデックス
-├── 01-getting-started/         # 初心者向けガイド
-├── 02-development/            # 開発ガイド
-├── 03-security/              # セキュリティ（Secure Toolkit含む）
-├── 04-deployment/            # デプロイ・本番環境
-├── 05-troubleshooting/       # トラブルシューティング
-├── 06-business/              # ビジネス・企画
-└── 07-technical-reference/   # 技術仕様
+├── 00-ようこそ/               # 初めての方への入り口
+├── 01-はじめての方へ/         # 初心者向けガイド
+├── 02-開発ガイド/            # 開発ガイド
+├── 03-セキュリティ/              # セキュリティ（Secure Toolkit含む）
+├── 04-デプロイ・本番環境/            # デプロイ・本番環境
+├── 05-トラブルシューティング/       # トラブルシューティング
+├── 06-ビジネス・企画/              # ビジネス・企画
+└── 07-技術仕様/   # 技術仕様
 ```
 
 ### ユーザータイプ別の案内
 
 #### 🌱 初心者・非エンジニア
-- 「初めて」「わからない」→ `docs/01-getting-started/FOR_BEGINNERS.md`
-- 「環境構築」→ `docs/01-getting-started/ENVIRONMENT_GUIDE.md`
-- 「エラーが怖い」→ `docs/05-troubleshooting/README.md`
+- 「初めて」「わからない」→ `docs/00-ようこそ/README.md`
+- 「環境構築」→ `docs/01-はじめての方へ/04-環境構築ガイド.md`
+- 「エラーが怖い」→ `docs/00-ようこそ/03-エラーと友達になる方法.md`
 
 #### 🔐 セキュリティ関連
-- 「ログイン機能」「認証」→ `docs/03-security/SECURE_TOOLKIT_QUICK_START.md`
-- 「データ保護」「暗号化」→ `docs/03-security/SECURE_TOOLKIT_GUIDE.md`
-- 「セキュリティ対策」→ `docs/03-security/SECURITY_IMPLEMENTATION.md`
+- 「ログイン機能」「認証」→ `docs/03-セキュリティ/01-セキュアツールキットクイックスタート.md`
+- 「データ保護」「暗号化」→ `docs/03-セキュリティ/02-セキュアツールキット詳細ガイド.md`
+- 「セキュリティ対策」→ `docs/03-セキュリティ/03-セキュリティ実装ガイド.md`
 
 #### 🚀 デプロイ・公開
-- 「本番公開」「デプロイ」→ `docs/04-deployment/PRODUCTION_CHECKLIST.md`
-- 「移行計画」→ `docs/04-deployment/MIGRATION_SCHEDULE.md`
+- 「本番公開」「デプロイ」→ `docs/04-デプロイ・本番環境/01-本番環境チェックリスト.md`
+- 「移行計画」→ `docs/04-デプロイ・本番環境/03-移行スケジュール.md`
 
 #### 🔧 トラブル対応
-- 「ログインできない」→ `docs/05-troubleshooting/SUPABASE_AUTH_TROUBLESHOOTING_GUIDE.md`
-- 「エラーが出た」→ `docs/05-troubleshooting/README.md`
+- 「ログインできない」→ `docs/05-トラブルシューティング/01-Supabase認証トラブルシューティング.md`
+- 「エラーが出た」→ `docs/05-トラブルシューティング/README.md`
 
 ### AIの応答例
 ```
@@ -737,7 +738,7 @@ docs/
 AI: 「ログイン機能の実装ですね！Secure Toolkitを使えば5分で実装できます。
 
 詳しくは以下のドキュメントをご覧ください：
-📖 docs/03-security/SECURE_TOOLKIT_QUICK_START.md
+📖 docs/03-セキュリティ/01-セキュアツールキットクイックスタート.md
 
 簡単な手順：
 1. Secure Toolkitをインストール

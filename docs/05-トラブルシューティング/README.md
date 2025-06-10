@@ -5,22 +5,22 @@
 ## 📚 ドキュメント一覧
 
 ### Supabase関連
-- **[SUPABASE_AUTH_TROUBLESHOOTING_GUIDE.md](./SUPABASE_AUTH_TROUBLESHOOTING_GUIDE.md)**
+- **[Supabase認証トラブルシューティングガイド](./01-Supabase認証トラブルシューティングガイド.md)**
   - 認証エラーの解決方法
   - よくある認証の問題
   - デバッグ方法
 
-- **[SUPABASE_LOCAL_SETUP.md](./SUPABASE_LOCAL_SETUP.md)**
+- **[Supabaseローカルセットアップ](./02-Supabaseローカルセットアップ.md)**
   - ローカル環境の設定
   - 開発環境での動作確認
   - 設定ファイルの例
 
-- **[supabase_config_example.md](./supabase_config_example.md)**
+- **[Supabase設定例](./03-Supabase設定例.md)**
   - 設定ファイルのサンプル
   - 各パラメータの説明
 
 ### デバッグ
-- **[STAGING_LOGIN_DEBUG_GUIDE.md](./STAGING_LOGIN_DEBUG_GUIDE.md)**
+- **[ステージングログインデバッグガイド](./04-ステージングログインデバッグガイド.md)**
   - ステージング環境のログイン問題
   - デバッグ手順
   - 解決策
@@ -35,9 +35,9 @@ graph TD
     B -->|データが保存されない| E[データベース関連]
     B -->|本番で動かない| F[環境関連]
     
-    C --> G[SUPABASE_AUTH_TROUBLESHOOTING_GUIDE.md]
+    C --> G[01-Supabase認証トラブルシューティングガイド.md]
     D --> H[開発ガイドを確認]
-    E --> I[SUPABASE_LOCAL_SETUP.md]
+    E --> I[02-Supabaseローカルセットアップ.md]
     F --> J[デプロイガイドを確認]
 ```
 
@@ -47,7 +47,7 @@ graph TD
 - **「ログインできない」**
   - メールアドレス/パスワードを確認
   - Supabaseの設定を確認
-  - [認証トラブルシューティング](./SUPABASE_AUTH_TROUBLESHOOTING_GUIDE.md)参照
+  - [認証トラブルシューティング](./01-Supabase認証トラブルシューティングガイド.md)参照
 
 - **「セッションが切れる」**
   - セッションタイムアウト設定を確認
@@ -68,13 +68,13 @@ graph TD
 - **「データが保存されない」**
   - Supabaseの接続設定
   - RLS（Row Level Security）の設定
-  - [ローカル設定ガイド](./SUPABASE_LOCAL_SETUP.md)確認
+  - [ローカル設定ガイド](./02-Supabaseローカルセットアップ.md)確認
 
 ### 🌐 環境・デプロイ
 - **「本番環境で動かない」**
   - 環境変数の設定
   - ビルド設定の確認
-  - [デプロイガイド](../04-deployment/)参照
+  - [デプロイガイド](../04-デプロイ・本番環境/)参照
 
 ## 🆘 解決できない場合
 
@@ -101,7 +101,7 @@ graph TD
 
 ## 🔗 関連ドキュメント
 
-- 初期設定 → [はじめての方へ](../01-getting-started/)
-- 開発ガイド → [開発](../02-development/)
-- セキュリティ → [セキュリティガイド](../03-security/)
-- 本番環境 → [デプロイガイド](../04-deployment/)
+- 初期設定 → [はじめての方へ](../01-はじめての方へ/)
+- 開発ガイド → [開発](../02-開発ガイド/)
+- セキュリティ → [セキュリティガイド](../03-セキュリティ/)
+- 本番環境 → [デプロイガイド](../04-デプロイ・本番環境/)
