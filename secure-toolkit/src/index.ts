@@ -27,6 +27,7 @@ export { dataMaskingService } from './services/dataMaskingService';
 // ===== Encryption =====
 export { useEncryption } from './hooks/useEncryption';
 export { cryptoService } from './services/cryptoService';
+export { kmsService } from './services/kmsService';
 export { EncryptedField } from './components/EncryptedField';
 // export type { EncryptionOptions, EncryptedData } from './types/encryption'; // TODO: 未実装
 
@@ -74,6 +75,17 @@ export { ConsentManager } from './components/privacy/ConsentManager';
 export { DataExporter } from './components/privacy/DataExporter';
 export { AccountDeleter } from './components/privacy/AccountDeleter';
 
+// ===== Healthcare/FHIR =====
+export { fhirService } from './services/fhirService';
+export type { 
+  Patient, 
+  Practitioner, 
+  Observation, 
+  DiagnosticReport,
+  Bundle,
+  Resource
+} from './types/fhir';
+
 // ===== Utilities =====
 export { secureStorage } from './utils/secureStorage';
 export { passwordValidator } from './utils/passwordValidator';
@@ -93,6 +105,21 @@ export { rateLimiter, createRateLimitMiddleware } from './middleware/rateLimiter
 // ===== Type Exports =====
 export type { ValidationResult, PasswordValidationResult, EmailValidationResult } from './types/validation';
 export type { MFAMethod, MFASetupResult, MFAVerificationResult, MFAConfig } from './types/mfa';
+export type { 
+  KeyType, 
+  KeyUsage, 
+  KeyAlgorithm, 
+  KeyState, 
+  KeyPolicy, 
+  KeyMetadata, 
+  DataKey, 
+  EncryptedData 
+} from './services/kmsService';
+export type { 
+  FHIRConversionOptions, 
+  CustomPatientData, 
+  CustomObservationData 
+} from './services/fhirService';
 
 // ===== Types (Additional) =====
 // export type {
@@ -128,8 +155,14 @@ const SecureToolkit = {
   // Services
   authService,
   cryptoService,
+  kmsService,
+  fhirService,
   tenantConfigManager,
   auditLogService,
+  mfaService,
+  jwtService,
+  securityMonitor,
+  dataMaskingService,
   
   // Components
   ProtectedRoute,
