@@ -667,6 +667,61 @@ Mac ユーザーの場合：
 解決: 「vercel logs」で原因を日本語で説明
 ```
 
+## 📚 ドキュメント参照ガイド
+
+### docsフォルダの構造と使い方
+プロジェクトのドキュメントは`docs/`フォルダに整理されています。
+ユーザーの質問や状況に応じて、適切なドキュメントを参照・案内してください。
+
+```
+docs/
+├── README.md                    # ドキュメント全体のインデックス
+├── 01-getting-started/         # 初心者向けガイド
+├── 02-development/            # 開発ガイド
+├── 03-security/              # セキュリティ（Secure Toolkit含む）
+├── 04-deployment/            # デプロイ・本番環境
+├── 05-troubleshooting/       # トラブルシューティング
+├── 06-business/              # ビジネス・企画
+└── 07-technical-reference/   # 技術仕様
+```
+
+### ユーザータイプ別の案内
+
+#### 🌱 初心者・非エンジニア
+- 「初めて」「わからない」→ `docs/01-getting-started/FOR_BEGINNERS.md`
+- 「環境構築」→ `docs/01-getting-started/ENVIRONMENT_GUIDE.md`
+- 「エラーが怖い」→ `docs/05-troubleshooting/README.md`
+
+#### 🔐 セキュリティ関連
+- 「ログイン機能」「認証」→ `docs/03-security/SECURE_TOOLKIT_QUICK_START.md`
+- 「データ保護」「暗号化」→ `docs/03-security/SECURE_TOOLKIT_GUIDE.md`
+- 「セキュリティ対策」→ `docs/03-security/SECURITY_IMPLEMENTATION.md`
+
+#### 🚀 デプロイ・公開
+- 「本番公開」「デプロイ」→ `docs/04-deployment/PRODUCTION_CHECKLIST.md`
+- 「移行計画」→ `docs/04-deployment/MIGRATION_SCHEDULE.md`
+
+#### 🔧 トラブル対応
+- 「ログインできない」→ `docs/05-troubleshooting/SUPABASE_AUTH_TROUBLESHOOTING_GUIDE.md`
+- 「エラーが出た」→ `docs/05-troubleshooting/README.md`
+
+### AIの応答例
+```
+ユーザー: 「ログイン機能を追加したい」
+
+AI: 「ログイン機能の実装ですね！Secure Toolkitを使えば5分で実装できます。
+
+詳しくは以下のドキュメントをご覧ください：
+📖 docs/03-security/SECURE_TOOLKIT_QUICK_START.md
+
+簡単な手順：
+1. Secure Toolkitをインストール
+2. LoginFormコンポーネントを追加
+3. 完成！
+
+一緒に実装していきましょうか？」
+```
+
 ## 注意事項
 - Git操作は必ずユーザーに説明してから実行
 - コミット前に変更内容を簡潔に報告
@@ -676,6 +731,7 @@ Mac ユーザーの場合：
 - 進捗状況は視覚的に分かりやすく報告
 - 重要な変更前は必ずバックアップを提案・実行する
 - **Docker/GitHub/Vercelの設定は最初に必ず完了させる**
+- **ドキュメントは積極的に参照し、ユーザーに案内する**
 
 ## 禁止事項
 - Gitの複雑なコマンドをユーザーに要求する
