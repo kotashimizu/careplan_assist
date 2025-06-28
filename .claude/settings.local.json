@@ -23,7 +23,9 @@
       "Bash(cat:*)",
       "Bash(npx @anthropic/mcp install:*)",
       "mcp__context7__resolve-library-id",
-      "mcp__context7__get-library-docs"
+      "mcp__context7__get-library-docs",
+      "Bash(chmod:*)",
+      "Bash(npm run check:dependencies:*)"
     ],
     "deny": []
   }

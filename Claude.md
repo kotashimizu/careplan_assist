@@ -65,10 +65,14 @@
 
 ### 💡 非エンジニア向けの説明例
 ```
-AI: 「開発環境を整えますね。以下の3つのサービスを使います：
+AI: 「開発環境を整えますね。以下の4つのツールを使います：
+
+🚀 mise（ミーズ）
+→ 開発環境を自動で整える「魔法の杖」です
+→ これ1つでバージョン管理やタスク実行ができます
 
 🐳 Docker（ドッカー）
-→ あなたのPCで安全に開発できる「魔法の箱」です
+→ データベースなどを動かす「魔法の箱」です
 → 他の人のPCでも同じように動きます
 
 🐙 GitHub（ギットハブ）  
@@ -327,20 +331,19 @@ GitHubで空のリポジトリを作成する際の設定：
 
 ## よく使うコマンド
 ```bash
-# 開発サーバー起動
-npm run dev
+# 🚀 mise経由での実行（推奨）
+mise run dev        # 開発サーバー起動
+mise run build      # ビルド
+mise run check      # 品質チェック（型・リント・依存関係）
+mise run setup      # 初期セットアップ
+mise run start      # Docker込みで全環境起動
 
-# 型チェック
-npm run typecheck
-
-# リント実行
-npm run lint
-
-# ビルド
-npm run build
-
-# 本番環境起動
-npm run start
+# 📦 npm直接実行も可能
+npm run dev         # 開発サーバー起動
+npm run typecheck   # 型チェック
+npm run lint        # リント実行
+npm run build       # ビルド
+npm run start       # 本番環境起動
 ```
 
 ## 🔧 開発環境の詳細設定
@@ -400,6 +403,10 @@ AIが以下を自動実行：
 # AIが作成する setup.sh
 #!/bin/bash
 echo "🚀 開発環境を準備中..."
+mise install
+echo "✅ mise環境準備完了"
+mise run setup
+echo "✅ 依存関係インストール完了"
 docker-compose up -d
 echo "✅ Docker環境準備完了"
 git init && git add . && git commit -m "初回コミット"

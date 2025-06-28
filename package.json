@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:dependencies": "node scripts/check-dependencies.js",
+    "check:health": "npm run check:dependencies && npm run typecheck && npm run lint"
   },
   "dependencies": {
     "next": "14.0.4",

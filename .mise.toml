@@ -1,0 +1,106 @@
+# mise configuration for AI-driven development template
+# https://mise.jdx.dev/
+
+[tools]
+# Node.js - package.jsonのenginesに合わせて18系の最新LTSを使用
+node = "18.20.5"
+
+# パッケージマネージャー
+# npm = "10.8.3"  # npmはNode.jsに含まれているため、通常は指定不要
+
+[env]
+# 開発環境用の環境変数
+NODE_ENV = "development"
+
+# Supabase環境変数のテンプレート（.env.localから読み込み）
+# 実際の値は.env.localに記載
+_.file = [".env.local"]
+
+# TypeScript設定
+TSC_COMPILE_ON_ERROR = "true"
+
+[tasks.setup]
+description = "初期セットアップ - 依存関係のインストールと環境準備"
+run = """
+echo "🚀 開発環境をセットアップしています..."
+npm install
+if [ ! -f .env.local ]; then
+  cp .env.example .env.local
+  echo "📝 .env.local を作成しました。Supabaseの認証情報を設定してください。"
+fi
+echo "✅ セットアップ完了！"
+"""
+
+[tasks.dev]
+description = "開発サーバーを起動"
+run = "npm run dev"
+
+[tasks.build]
+description = "プロダクションビルド"
+run = "npm run build"
+
+[tasks.check]
+description = "コード品質チェック（型チェック、リント、依存関係）"
+run = """
+echo "🔍 コード品質をチェックしています..."
+npm run typecheck
+npm run lint
+npm run check:dependencies
+echo "✅ すべてのチェックが完了しました！"
+"""
+
+[tasks.clean]
+description = "ビルド成果物とキャッシュをクリーン"
+run = """
+echo "🧹 クリーンアップ中..."
+rm -rf .next
+rm -rf node_modules
+rm -rf .turbo
+echo "✅ クリーンアップ完了！"
+"""
+
+[tasks.reinstall]
+description = "依存関係を完全に再インストール"
+depends = ["clean"]
+run = """
+echo "📦 依存関係を再インストールしています..."
+npm install
+echo "✅ 再インストール完了！"
+"""
+
+[tasks.docker-up]
+description = "Docker環境を起動（将来の拡張用）"
+run = """
+if [ -f docker-compose.yml ]; then
+  docker-compose up -d
+  echo "🐳 Docker環境が起動しました"
+else
+  echo "ℹ️  docker-compose.yml が見つかりません"
+fi
+"""
+
+[tasks.docker-down]
+description = "Docker環境を停止（将来の拡張用）"
+run = """
+if [ -f docker-compose.yml ]; then
+  docker-compose down
+  echo "🐳 Docker環境を停止しました"
+else
+  echo "ℹ️  docker-compose.yml が見つかりません"
+fi
+"""
+
+# 開発フロー用の複合タスク
+[tasks.start]
+description = "完全な開発環境を起動（Docker + 開発サーバー）"
+run = """
+mise run docker-up
+mise run dev
+"""
+
+[tasks.stop]
+description = "開発環境を停止"
+run = """
+mise run docker-down
+echo "👋 開発環境を停止しました"
+"""

@@ -8,6 +8,25 @@
 ## 📁 使い方
 
 ### 🔄 GitHubからクローンした場合
+
+#### 🚀 mise を使った方法（推奨）
+```bash
+# 1. リポジトリをクローン
+git clone https://github.com/your-username/your-project.git
+cd your-project
+
+# 2. mise をインストール（初回のみ）
+# Mac: brew install mise
+# Linux/WSL: curl https://mise.run | sh
+
+# 3. 開発環境セットアップ（これだけ！）
+mise run setup
+
+# 4. 開発サーバー起動
+mise run dev
+```
+
+#### 📦 従来の方法（npm）
 ```bash
 # 1. リポジトリをクローン
 git clone https://github.com/your-username/your-project.git

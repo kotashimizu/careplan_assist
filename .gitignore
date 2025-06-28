@@ -42,3 +42,7 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+# mise
+.mise.local.toml
+.mise.*.cache
