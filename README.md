@@ -61,18 +61,18 @@ Next.js + Supabase + Vercel構成で、すぐに開発を始められます。
 - 効率的に開発を進めたい方
 
 ## 📚 詳細ガイド
-- [環境構築ガイド](docs/01-はじめての方へ/ENVIRONMENT_SETUP.md) 🌟 統合版！
+- [環境構築ガイド](docs/01-getting-started/ENVIRONMENT_SETUP.md) 🌟 統合版！
 - [プロジェクトの始め方](START_HERE.md)
-- [開発ガイド](docs/02-開発ガイド/)
+- [開発ガイド](docs/02-development/)
 
 ## 🤖 AI開発者向け
-- [Claude.md](Claude.md) - AI開発の基本ルール
-- [.ai-guide.md](.ai-guide.md.example) - プロジェクト固有ルール（テンプレート）
-- [AI_RULES.md](AI_RULES.md.example) - 詳細実装ルール（テンプレート）
+- [CLAUDE.md](CLAUDE.md) - AI開発の基本ルール
+- [.ai-guide.md.example](.ai-guide.md.example) - プロジェクト固有ルール（テンプレート）
+- [AI_RULES.md.example](AI_RULES.md.example) - 詳細実装ルール（テンプレート）
 
 ## 🔐 セキュリティ機能
-- [セキュリティガイド](docs/03-セキュリティ/) - 段階的なセキュリティ実装
-- [Supabase統合セキュリティ](SUPABASE_WINDSURF_SECURITY_SETUP.md) 🆕
+- [セキュリティガイド](docs/03-security/) - 段階的なセキュリティ実装
+- [AI安全運用ガイド](docs/03-security/05-AI安全運用ガイド.md) - permissions.deny設定
 
 ## 💬 質問・相談大歓迎！
 
