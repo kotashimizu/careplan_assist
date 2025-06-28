@@ -11,13 +11,25 @@ export default function Home() {
         <div className="flex gap-4 justify-center">
           <a
             href="/support-plan"
-            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100"
+            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           >
             <h2 className="mb-3 text-2xl font-semibold">
               支援計画書作成 {'->'} 
             </h2>
             <p className="m-0 max-w-[30ch] text-sm opacity-50">
-              新しい支援計画書を作成します
+              個別支援計画書を簡単に作成できます
+            </p>
+          </a>
+          
+          <a
+            href="/support-plan"
+            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          >
+            <h2 className="mb-3 text-2xl font-semibold">
+              テンプレート {'->'} 
+            </h2>
+            <p className="m-0 max-w-[30ch] text-sm opacity-50">
+              厚労省標準様式など3種類のテンプレート
             </p>
           </a>
         </div>
