@@ -54,4 +54,4 @@ temp/
 .eslintcache
 .npm/
 .yarn/
-.pnp.*
+.pnp.*node_modules/
