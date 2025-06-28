@@ -1,0 +1,44 @@
+# Claude Code Security Configuration
+# AIが実行してはいけない操作を定義
+
+# 危険なファイル操作
+*.env*
+*.pem
+*.key
+*_rsa*
+.ssh/*
+.aws/*
+.gcp/*
+.azure/*
+
+# システムファイル
+/etc/*
+/usr/*
+/System/*
+~/Library/Keychains/*
+
+# 危険なコマンド
+bash:rm -rf
+bash:sudo
+bash:chmod 777
+bash:curl * | bash
+bash:wget * | sh
+
+# Git操作の制限
+bash:git push --force
+bash:git reset --hard HEAD~
+
+# データベース操作
+bash:psql -c "DROP
+bash:mysql -e "DROP
+
+# 外部通信の制限
+bash:nc
+bash:telnet
+bash:ssh
+bash:scp
+
+# プロセス操作
+bash:kill -9
+bash:pkill
+bash:killall

@@ -46,3 +46,7 @@ Thumbs.db
 # mise
 .mise.local.toml
 .mise.*.cache
+
+# Security - Never commit these
+permissions.allow
+.permissions.local
