@@ -123,74 +123,114 @@ export default function SupportPlanListPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* ヘッダー */}
-        <div className="mb-8">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                支援計画書管理
-              </h1>
-              <p className="text-gray-600">
-                作成された個別支援計画書の一覧・管理
-              </p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      {/* ヘッダー */}
+      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-lg">📊</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">支援計画書管理</h1>
+                <p className="text-sm text-gray-600">作成された個別支援計画書の一覧・管理</p>
+              </div>
             </div>
-            <Link
-              href="/support-plan"
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
-            >
-              ➕ 新規作成
-            </Link>
+            <div className="flex gap-3">
+              <Link
+                href="/support-plan"
+                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                ➕ 新規作成
+              </Link>
+              <Link
+                href="/"
+                className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                🏠 ホーム
+              </Link>
+            </div>
           </div>
         </div>
+      </header>
+
+      <div className="max-w-7xl mx-auto px-4 py-8">
 
         {/* エラー表示 */}
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md">
-            <p className="text-red-800">{error}</p>
+          <div className="mb-6 p-4 bg-red-50 border-2 border-red-200 rounded-xl">
+            <div className="flex items-center gap-2">
+              <span className="text-red-600">⚠️</span>
+              <p className="text-red-800 font-medium">{error}</p>
+            </div>
           </div>
         )}
 
         {/* 統計情報 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-sm font-medium text-gray-500">総計画書数</h3>
-            <p className="text-3xl font-bold text-gray-900">{plans.length}</p>
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-sm font-medium text-gray-500 mb-1">総計画書数</h3>
+                <p className="text-3xl font-bold text-gray-900">{plans.length}</p>
+              </div>
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
+                <span className="text-blue-600 text-xl">📋</span>
+              </div>
+            </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-sm font-medium text-gray-500">完成済み</h3>
-            <p className="text-3xl font-bold text-green-600">
-              {plans.filter(p => p.metadata.status === 'completed').length}
-            </p>
+          
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-sm font-medium text-gray-500 mb-1">完成済み</h3>
+                <p className="text-3xl font-bold text-green-600">
+                  {plans.filter(p => p.metadata.status === 'completed').length}
+                </p>
+              </div>
+              <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center">
+                <span className="text-green-600 text-xl">✅</span>
+              </div>
+            </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-sm font-medium text-gray-500">下書き</h3>
-            <p className="text-3xl font-bold text-yellow-600">
-              {plans.filter(p => p.metadata.status === 'draft').length}
-            </p>
+          
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-sm font-medium text-gray-500 mb-1">下書き</h3>
+                <p className="text-3xl font-bold text-yellow-600">
+                  {plans.filter(p => p.metadata.status === 'draft').length}
+                </p>
+              </div>
+              <div className="w-12 h-12 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center">
+                <span className="text-yellow-600 text-xl">📝</span>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* 計画書一覧 */}
         {plans.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-md p-12 text-center">
-            <div className="text-gray-400 text-6xl mb-4">📋</div>
-            <h3 className="text-xl font-medium text-gray-900 mb-2">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-12 text-center border border-gray-100 shadow-lg">
+            <div className="w-24 h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span className="text-gray-400 text-4xl">📋</span>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
               まだ支援計画書が作成されていません
             </h3>
-            <p className="text-gray-600 mb-6">
-              「新規作成」ボタンから最初の支援計画書を作成しましょう
+            <p className="text-gray-600 mb-8 max-w-md mx-auto">
+              「新規作成」ボタンから最初の支援計画書を作成しましょう。AIを活用して簡単に作成できます。
             </p>
             <Link
               href="/support-plan"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 hover:scale-105 shadow-lg"
             >
               ➕ 新規作成を開始
             </Link>
           </div>
         ) : (
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
@@ -243,25 +283,27 @@ export default function SupportPlanListPage() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {new Date(plan.metadata.updatedAt).toLocaleString('ja-JP')}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                        <Link
-                          href={`/support-plan/edit/${plan.id}`}
-                          className="text-blue-600 hover:text-blue-900"
-                        >
-                          編集
-                        </Link>
-                        <button
-                          onClick={() => handleDuplicate(plan)}
-                          className="text-green-600 hover:text-green-900"
-                        >
-                          複製
-                        </button>
-                        <button
-                          onClick={() => handleDelete(plan.id)}
-                          className="text-red-600 hover:text-red-900"
-                        >
-                          削除
-                        </button>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <div className="flex items-center gap-2">
+                          <Link
+                            href={`/support-plan/edit/${plan.id}`}
+                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-xs font-medium"
+                          >
+                            ✏️ 編集
+                          </Link>
+                          <button
+                            onClick={() => handleDuplicate(plan)}
+                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors text-xs font-medium"
+                          >
+                            📋 複製
+                          </button>
+                          <button
+                            onClick={() => handleDelete(plan.id)}
+                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors text-xs font-medium"
+                          >
+                            🗑️ 削除
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -272,13 +314,18 @@ export default function SupportPlanListPage() {
         )}
 
         {/* フッター */}
-        <div className="mt-8 text-center">
-          <Link
-            href="/"
-            className="text-blue-600 hover:text-blue-800"
-          >
-            ← ホームに戻る
-          </Link>
+        <div className="mt-12 text-center">
+          <div className="bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-gray-100">
+            <p className="text-gray-600 mb-4">
+              💡 支援計画書の作成・管理はすべてブラウザ内で安全に処理されます
+            </p>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+            >
+              🏠 ホームに戻る
+            </Link>
+          </div>
         </div>
       </div>
     </div>

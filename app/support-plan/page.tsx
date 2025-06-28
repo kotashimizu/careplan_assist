@@ -163,7 +163,7 @@ export default function SupportPlanPage() {
             value={value}
             onChange={(e) => handleInputChange(field.id, e.target.value)}
             placeholder={field.placeholder}
-            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full p-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white"
             required={field.required}
           />
         )
@@ -175,7 +175,7 @@ export default function SupportPlanPage() {
             onChange={(e) => handleInputChange(field.id, e.target.value)}
             placeholder={field.placeholder}
             rows={4}
-            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full p-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white resize-none"
             required={field.required}
           />
         )
@@ -189,7 +189,7 @@ export default function SupportPlanPage() {
             placeholder={field.placeholder}
             min={field.validation?.min}
             max={field.validation?.max}
-            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full p-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white"
             required={field.required}
           />
         )
@@ -200,21 +200,21 @@ export default function SupportPlanPage() {
             type="date"
             value={value}
             onChange={(e) => handleInputChange(field.id, e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full p-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white"
             required={field.required}
           />
         )
 
       case 'boolean':
         return (
-          <label className="flex items-center space-x-2">
+          <label className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-blue-300 transition-colors cursor-pointer">
             <input
               type="checkbox"
               checked={value}
               onChange={(e) => handleInputChange(field.id, e.target.checked)}
-              className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              className="w-5 h-5 text-blue-600 border-2 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
             />
-            <span>同意する</span>
+            <span className="font-medium text-gray-700">同意する</span>
           </label>
         )
 
@@ -223,7 +223,7 @@ export default function SupportPlanPage() {
           <select
             value={value}
             onChange={(e) => handleInputChange(field.id, e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full p-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white"
             required={field.required}
           >
             <option value="">選択してください</option>
@@ -242,69 +242,126 @@ export default function SupportPlanPage() {
             value={value}
             onChange={(e) => handleInputChange(field.id, e.target.value)}
             placeholder={field.placeholder}
-            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full p-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white"
           />
         )
     }
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                個別支援計画書作成
-              </h1>
-              <p className="text-gray-600">
-                テンプレートを選択して個別支援計画書を作成します
-              </p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      {/* ヘッダー */}
+      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-lg">📋</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">個別支援計画書作成</h1>
+                <p className="text-sm text-gray-600">テンプレート選択から開始</p>
+              </div>
             </div>
             <div className="flex gap-3">
               <Link
                 href="/support-plan/list"
-                className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700"
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
-                📋 管理画面
+                📊 管理画面
               </Link>
               <Link
                 href="/"
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
               >
-                ← ホーム
+                🏠 ホーム
               </Link>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="max-w-6xl mx-auto px-4 py-8">
+
+        {/* プログレスバー */}
+        <div className="mb-8">
+          <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-100">
+            <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+              <span>作成進捗</span>
+              <span>{selectedTemplate ? (currentPlan ? '100%' : '33%') : '0%'}</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div 
+                className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full transition-all duration-500"
+                style={{ 
+                  width: selectedTemplate ? (currentPlan ? '100%' : '33%') : '0%' 
+                }}
+              ></div>
             </div>
           </div>
         </div>
 
         {message && (
-          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-md">
-            <p className="text-blue-800">{message}</p>
+          <div className={`mb-6 p-4 rounded-xl border ${
+            message.includes('失敗') || message.includes('エラー')
+              ? 'bg-red-50 border-red-200 text-red-800'
+              : 'bg-green-50 border-green-200 text-green-800'
+          }`}>
+            <div className="flex items-center gap-2">
+              <span>{message.includes('失敗') || message.includes('エラー') ? '⚠️' : '✅'}</span>
+              <p>{message}</p>
+            </div>
           </div>
         )}
 
         {/* テンプレート選択 */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4">1. テンプレート選択</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-100 shadow-lg mb-8">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white font-bold">
+              1
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">テンプレート選択</h2>
+          </div>
+          
+          <p className="text-gray-600 mb-6">
+            用途に応じて最適なテンプレートを選択してください
+          </p>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {templates.map((template) => (
               <button
                 key={template.id}
                 onClick={() => handleTemplateSelect(template.id)}
-                className={`p-4 border rounded-lg text-left transition-colors ${
+                className={`group p-6 border-2 rounded-2xl text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
                   selectedTemplate?.id === template.id
-                    ? 'border-blue-500 bg-blue-50'
-                    : 'border-gray-200 hover:border-gray-300'
+                    ? 'border-blue-500 bg-blue-50 shadow-md'
+                    : 'border-gray-200 hover:border-blue-300 bg-white'
                 }`}
               >
-                <h3 className="font-medium text-gray-900">{template.name}</h3>
-                <p className="text-sm text-gray-600 mt-1">{template.description}</p>
-                <div className="flex flex-wrap gap-1 mt-2">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl ${
+                    template.id === 'mhlw-standard' ? 'bg-gradient-to-br from-red-100 to-red-200 text-red-600' :
+                    template.id === 'simple' ? 'bg-gradient-to-br from-green-100 to-green-200 text-green-600' :
+                    'bg-gradient-to-br from-purple-100 to-purple-200 text-purple-600'
+                  }`}>
+                    {template.id === 'mhlw-standard' ? '🏛️' :
+                     template.id === 'simple' ? '⚡' : '📋'}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">{template.name}</h3>
+                    {selectedTemplate?.id === template.id && (
+                      <span className="text-sm text-blue-600 font-medium">✓ 選択中</span>
+                    )}
+                  </div>
+                </div>
+                
+                <p className="text-gray-600 mb-4 line-clamp-2">{template.description}</p>
+                
+                <div className="flex flex-wrap gap-2">
                   {template.metadata?.tags?.map((tag) => (
                     <span
                       key={tag}
-                      className="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded"
+                      className="inline-block px-3 py-1 text-xs bg-gray-100 text-gray-600 rounded-full"
                     >
                       {tag}
                     </span>
@@ -317,35 +374,46 @@ export default function SupportPlanPage() {
 
         {/* AI分析セクション */}
         {selectedTemplate && (
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">2. 📝 AI分析（オプション）</h2>
-            <p className="text-gray-600 mb-4">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-100 shadow-lg mb-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+                2
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900">AI分析</h2>
+              <span className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
+                オプション
+              </span>
+            </div>
+            <p className="text-gray-600 mb-6">
               利用者の情報や状況を自由に入力してください。AIが内容を分析して、支援計画書の項目を自動で抽出します。
             </p>
             
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  利用者情報・状況の入力
+            <div className="space-y-6">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
+                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
+                  🤖 利用者情報・状況の入力
                 </label>
                 <textarea
                   value={analysisText}
                   onChange={(e) => setAnalysisText(e.target.value)}
                   placeholder="例: 田中太郎さん（25歳、男性）は知的障害があり、日常生活の支援が必要です。一人暮らしを目指しており、調理や買い物の練習をしたいと希望されています。コミュニケーションは問題なく、人とのかかわりを好まれます。..."
                   rows={6}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white"
                 />
+                <div className="mt-3 text-sm text-gray-600 flex items-center gap-2">
+                  💡 <span className="font-medium">コツ:</span> 年齢、性別、障害の種類、希望、困りごとなどを具体的に記述すると正確な分析結果が得られます
+                </div>
               </div>
               
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 <button
                   onClick={handleAnalyze}
                   disabled={analyzing || !analysisText.trim()}
-                  className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:from-green-600 hover:to-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 shadow-lg"
                 >
                   {analyzing ? (
                     <>
-                      <span className="animate-spin">⚡</span>
+                      <div className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full"></div>
                       AI分析中...
                     </>
                   ) : (
@@ -361,46 +429,69 @@ export default function SupportPlanPage() {
                       setAnalysisText('')
                       setAnalysisResult(null)
                     }}
-                    className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                    className="px-6 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors font-medium"
                   >
-                    クリア
+                    🗑️ クリア
                   </button>
                 )}
               </div>
 
               {analysisResult && analysisResult.success && (
-                <div className="bg-green-50 border border-green-200 rounded-md p-4">
-                  <h3 className="font-medium text-green-800 mb-2">✅ 分析完了</h3>
-                  {analysisResult.confidence && (
-                    <p className="text-green-700 text-sm">
-                      信頼度: {Math.round(analysisResult.confidence * 100)}%
-                    </p>
-                  )}
-                  {analysisResult.suggestions && analysisResult.suggestions.length > 0 && (
-                    <div className="mt-2">
-                      <p className="text-green-700 text-sm font-medium">提案:</p>
-                      <ul className="text-green-600 text-sm list-disc list-inside">
-                        {analysisResult.suggestions.map((suggestion: string, index: number) => (
-                          <li key={index}>{suggestion}</li>
-                        ))}
-                      </ul>
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold">✓</span>
                     </div>
-                  )}
+                    <h3 className="font-bold text-green-800 text-lg">AI分析完了</h3>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {analysisResult.confidence && (
+                      <div className="bg-white rounded-lg p-4 border border-green-100">
+                        <p className="text-sm text-gray-600 mb-1">信頼度</p>
+                        <div className="flex items-center gap-2">
+                          <div className="flex-1 bg-gray-200 rounded-full h-2">
+                            <div 
+                              className="bg-green-500 h-2 rounded-full transition-all duration-500"
+                              style={{ width: `${Math.round(analysisResult.confidence * 100)}%` }}
+                            ></div>
+                          </div>
+                          <span className="text-green-700 font-bold">
+                            {Math.round(analysisResult.confidence * 100)}%
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {analysisResult.suggestions && analysisResult.suggestions.length > 0 && (
+                      <div className="bg-white rounded-lg p-4 border border-green-100">
+                        <p className="text-sm text-gray-600 mb-2 font-medium">💡 AI提案</p>
+                        <ul className="text-green-700 text-sm space-y-1">
+                          {analysisResult.suggestions.slice(0, 2).map((suggestion: string, index: number) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <span className="text-green-500 mt-1">•</span>
+                              <span>{suggestion}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
-            </div>
-
-            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-md text-sm text-blue-800">
-              💡 <strong>使い方のコツ:</strong> 
-              利用者の年齢、性別、障害の種類、現在の状況、希望や目標、困っていることなどを具体的に記述すると、より正確な分析結果が得られます。
             </div>
           </div>
         )}
 
         {/* フォーム */}
         {selectedTemplate && (
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-6">3. 支援計画書入力</h2>
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-100 shadow-lg mb-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
+                3
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900">支援計画書入力</h2>
+            </div>
             
             {selectedTemplate.sections ? (
               // セクション別に表示
@@ -458,9 +549,18 @@ export default function SupportPlanPage() {
               <button
                 onClick={handleSave}
                 disabled={loading}
-                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 shadow-lg"
               >
-                {loading ? '保存中...' : '保存'}
+                {loading ? (
+                  <>
+                    <div className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full"></div>
+                    保存中...
+                  </>
+                ) : (
+                  <>
+                    💾 支援計画書を保存
+                  </>
+                )}
               </button>
             </div>
           </div>
@@ -468,16 +568,58 @@ export default function SupportPlanPage() {
 
         {/* 保存結果 */}
         {currentPlan && (
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">4. 保存完了</h2>
-            <div className="bg-green-50 border border-green-200 rounded-md p-4">
-              <p className="text-green-800">
-                支援計画書が正常に保存されました
-              </p>
-              <p className="text-green-600 text-sm mt-1">
-                ID: {currentPlan.id}<br />
-                作成日時: {new Date(currentPlan.metadata.createdAt).toLocaleString('ja-JP')}
-              </p>
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-100 shadow-lg">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white font-bold">
+                ✓
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900">保存完了</h2>
+            </div>
+            
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                  <span className="text-white text-xl">🎉</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-green-800">
+                    支援計画書が正常に保存されました！
+                  </h3>
+                  <p className="text-green-600 text-sm">
+                    ID: {currentPlan.id}
+                  </p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div className="bg-white rounded-lg p-4 border border-green-100">
+                  <p className="text-sm text-gray-600 mb-1">作成日時</p>
+                  <p className="font-medium text-gray-900">
+                    {new Date(currentPlan.metadata.createdAt).toLocaleString('ja-JP')}
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg p-4 border border-green-100">
+                  <p className="text-sm text-gray-600 mb-1">ステータス</p>
+                  <span className="inline-flex px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
+                    下書き
+                  </span>
+                </div>
+              </div>
+              
+              <div className="mt-6 flex gap-3">
+                <Link
+                  href="/support-plan/list"
+                  className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium"
+                >
+                  📊 管理画面で確認
+                </Link>
+                <Link
+                  href="/support-plan"
+                  className="flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors font-medium"
+                >
+                  ➕ 新規作成
+                </Link>
+              </div>
             </div>
           </div>
         )}
