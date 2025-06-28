@@ -104,3 +104,20 @@ run = """
 mise run docker-down
 echo "👋 開発環境を停止しました"
 """
+
+# E2Eテスト関連
+[tasks.test-e2e]
+description = "E2Eテストを実行"
+run = "npx playwright test"
+
+[tasks.test-ui]
+description = "UIモードでE2Eテストを実行（ブラウザで確認）"
+run = "npx playwright test --ui"
+
+[tasks.test-debug]
+description = "デバッグモードでE2Eテストを実行"
+run = "npx playwright test --debug"
+
+[tasks.test-install]
+description = "Playwrightのブラウザをインストール"
+run = "npx playwright install --with-deps"

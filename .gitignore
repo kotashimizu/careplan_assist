@@ -50,3 +50,9 @@ Thumbs.db
 # Security - Never commit these
 permissions.allow
 .permissions.local
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+tests/screenshots/*.png

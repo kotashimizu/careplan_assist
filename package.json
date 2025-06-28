@@ -9,7 +9,10 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "check:dependencies": "node scripts/check-dependencies.js",
-    "check:health": "npm run check:dependencies && npm run typecheck && npm run lint"
+    "check:health": "npm run check:dependencies && npm run typecheck && npm run lint",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug"
   },
   "dependencies": {
     "next": "14.0.4",
