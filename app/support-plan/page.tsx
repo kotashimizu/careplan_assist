@@ -13,6 +13,11 @@ export default function SupportPlanPage() {
   const [currentPlan, setCurrentPlan] = useState<SupportPlanData | null>(null)
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<string>('')
+  
+  // AI分析用の状態
+  const [analysisText, setAnalysisText] = useState<string>('')
+  const [analyzing, setAnalyzing] = useState(false)
+  const [analysisResult, setAnalysisResult] = useState<any>(null)
 
   // モジュールの初期化
   useEffect(() => {
@@ -76,6 +81,46 @@ export default function SupportPlanPage() {
       ...prev,
       [fieldId]: value
     }))
+  }
+
+  // AI分析の実行
+  const handleAnalyze = async () => {
+    if (!service || !selectedTemplate || !analysisText.trim()) {
+      setMessage('テンプレート選択とテキスト入力が必要です')
+      return
+    }
+
+    setAnalyzing(true)
+    setMessage('AI分析を実行中...')
+    
+    try {
+      const result = await service.analyze(analysisText, selectedTemplate.id)
+      setAnalysisResult(result)
+      
+      if (result.success && result.data) {
+        // フォームデータを更新
+        setFormData(prev => ({
+          ...prev,
+          ...result.data
+        }))
+        
+        let successMessage = 'AI分析が完了しました'
+        if (result.confidence) {
+          successMessage += ` (信頼度: ${Math.round(result.confidence * 100)}%)`
+        }
+        if (result.suggestions && result.suggestions.length > 0) {
+          successMessage += `\n\n提案: ${result.suggestions.join(', ')}`
+        }
+        setMessage(successMessage)
+      } else {
+        setMessage(`AI分析エラー: ${result.error || '不明なエラー'}`)
+      }
+    } catch (error) {
+      console.error('AI分析エラー:', error)
+      setMessage('AI分析中にエラーが発生しました')
+    } finally {
+      setAnalyzing(false)
+    }
   }
 
   // 支援計画書の保存
@@ -251,10 +296,92 @@ export default function SupportPlanPage() {
           </div>
         </div>
 
+        {/* AI分析セクション */}
+        {selectedTemplate && (
+          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 className="text-xl font-semibold mb-4">2. 📝 AI分析（オプション）</h2>
+            <p className="text-gray-600 mb-4">
+              利用者の情報や状況を自由に入力してください。AIが内容を分析して、支援計画書の項目を自動で抽出します。
+            </p>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  利用者情報・状況の入力
+                </label>
+                <textarea
+                  value={analysisText}
+                  onChange={(e) => setAnalysisText(e.target.value)}
+                  placeholder="例: 田中太郎さん（25歳、男性）は知的障害があり、日常生活の支援が必要です。一人暮らしを目指しており、調理や買い物の練習をしたいと希望されています。コミュニケーションは問題なく、人とのかかわりを好まれます。..."
+                  rows={6}
+                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+              
+              <div className="flex gap-3">
+                <button
+                  onClick={handleAnalyze}
+                  disabled={analyzing || !analysisText.trim()}
+                  className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                >
+                  {analyzing ? (
+                    <>
+                      <span className="animate-spin">⚡</span>
+                      AI分析中...
+                    </>
+                  ) : (
+                    <>
+                      🤖 AI分析実行
+                    </>
+                  )}
+                </button>
+                
+                {analysisText && (
+                  <button
+                    onClick={() => {
+                      setAnalysisText('')
+                      setAnalysisResult(null)
+                    }}
+                    className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+                  >
+                    クリア
+                  </button>
+                )}
+              </div>
+
+              {analysisResult && analysisResult.success && (
+                <div className="bg-green-50 border border-green-200 rounded-md p-4">
+                  <h3 className="font-medium text-green-800 mb-2">✅ 分析完了</h3>
+                  {analysisResult.confidence && (
+                    <p className="text-green-700 text-sm">
+                      信頼度: {Math.round(analysisResult.confidence * 100)}%
+                    </p>
+                  )}
+                  {analysisResult.suggestions && analysisResult.suggestions.length > 0 && (
+                    <div className="mt-2">
+                      <p className="text-green-700 text-sm font-medium">提案:</p>
+                      <ul className="text-green-600 text-sm list-disc list-inside">
+                        {analysisResult.suggestions.map((suggestion: string, index: number) => (
+                          <li key={index}>{suggestion}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-md text-sm text-blue-800">
+              💡 <strong>使い方のコツ:</strong> 
+              利用者の年齢、性別、障害の種類、現在の状況、希望や目標、困っていることなどを具体的に記述すると、より正確な分析結果が得られます。
+            </div>
+          </div>
+        )}
+
         {/* フォーム */}
         {selectedTemplate && (
           <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-6">2. 支援計画書入力</h2>
+            <h2 className="text-xl font-semibold mb-6">3. 支援計画書入力</h2>
             
             {selectedTemplate.sections ? (
               // セクション別に表示
@@ -323,7 +450,7 @@ export default function SupportPlanPage() {
         {/* 保存結果 */}
         {currentPlan && (
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">3. 保存完了</h2>
+            <h2 className="text-xl font-semibold mb-4">4. 保存完了</h2>
             <div className="bg-green-50 border border-green-200 rounded-md p-4">
               <p className="text-green-800">
                 支援計画書が正常に保存されました
