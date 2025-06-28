@@ -65,6 +65,11 @@ Next.js + Supabase + Vercel構成で、すぐに開発を始められます。
 - [プロジェクトの始め方](START_HERE.md)
 - [開発ガイド](docs/02-開発ガイド/)
 
+## 🤖 AI開発者向け
+- [Claude.md](Claude.md) - AI開発の基本ルール
+- [.ai-guide.md](.ai-guide.md.example) - プロジェクト固有ルール（テンプレート）
+- [AI_RULES.md](AI_RULES.md.example) - 詳細実装ルール（テンプレート）
+
 ## 🔐 セキュリティ機能
 - [セキュリティガイド](docs/03-セキュリティ/) - 段階的なセキュリティ実装
 - [Supabase統合セキュリティ](SUPABASE_WINDSURF_SECURITY_SETUP.md) 🆕
