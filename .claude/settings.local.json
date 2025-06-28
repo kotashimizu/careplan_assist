@@ -18,7 +18,12 @@
       "Bash(npm run build:*)",
       "Bash(npm install:*)",
       "Bash(mv:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(cat:*)",
+      "Bash(npx @anthropic/mcp install:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs"
     ],
     "deny": []
   }
