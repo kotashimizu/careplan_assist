@@ -25,7 +25,12 @@
       "mcp__context7__resolve-library-id",
       "mcp__context7__get-library-docs",
       "Bash(chmod:*)",
-      "Bash(npm run check:dependencies:*)"
+      "Bash(npm run check:dependencies:*)",
+      "Bash(node:*)",
+      "Bash(npm --version)",
+      "Bash(git --version)",
+      "Bash(npm run dev:*)",
+      "Bash(cp:*)"
     ],
     "deny": []
   }
