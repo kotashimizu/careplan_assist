@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { SupportPlanService } from '@/support-plan-module/src/core/SupportPlanService'
 import { SupportPlanTemplate, SupportPlanData, ModuleConfig } from '@/support-plan-module/src/types'
 import { getDefaultTemplates } from '@/support-plan-module/src/templates/defaultTemplates'
@@ -251,12 +252,30 @@ export default function SupportPlanPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            個別支援計画書作成
-          </h1>
-          <p className="text-gray-600">
-            テンプレートを選択して個別支援計画書を作成します
-          </p>
+          <div className="flex justify-between items-center mb-4">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                個別支援計画書作成
+              </h1>
+              <p className="text-gray-600">
+                テンプレートを選択して個別支援計画書を作成します
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <Link
+                href="/support-plan/list"
+                className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700"
+              >
+                📋 管理画面
+              </Link>
+              <Link
+                href="/"
+                className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
+              >
+                ← ホーム
+              </Link>
+            </div>
+          </div>
         </div>
 
         {message && (
