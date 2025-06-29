@@ -1,89 +1,99 @@
-# AI駆動開発プロジェクトテンプレート
+# 個別支援計画書作成支援システム
 
-> 🚀 **初めての方**: [START_HERE.md](START_HERE.md) から始めてください！
+AIを活用した個別支援計画書の作成を支援するWebアプリケーションです。
 
-## 🚀 はじめに
-このテンプレートは、AIエディター（Claude、Cursor、Windsurf等）を使った効率的なアプリケーション開発をサポートします。
+## 🎯 主な機能
 
-## 📁 使い方
+- **AIによる文章分析**: 利用者のアセスメント情報を自動分析
+- **テンプレート選択**: 厚労省標準様式を含む複数のテンプレート対応
+- **プライバシー重視**: ローカルストレージでのデータ管理
+- **データ管理**: 作成した計画書の一覧・編集・削除機能
+- **エクスポート機能**: PDF・Excel形式でのダウンロード対応
 
-### 🔄 GitHubからクローンした場合
+## 🚀 クイックスタート
 
-#### 🚀 mise を使った方法（推奨）
+### 必要な環境
+- Node.js 18以上
+- npm または yarn
+- Google AI Studio APIキー（オプション）
+
+### インストール手順
+
 ```bash
-# 1. リポジトリをクローン
-git clone https://github.com/your-username/your-project.git
-cd your-project
+# リポジトリのクローン
+git clone https://github.com/kotashimizu/careplan_assist.git
+cd careplan_assist
 
-# 2. mise をインストール（初回のみ）
-# Mac: brew install mise
-# Linux/WSL: curl https://mise.run | sh
-
-# 3. 開発環境セットアップ（これだけ！）
-mise run setup
-
-# 4. 開発サーバー起動
-mise run dev
-```
-
-#### 📦 従来の方法（npm）
-```bash
-# 1. リポジトリをクローン
-git clone https://github.com/your-username/your-project.git
-cd your-project
-
-# 2. 依存関係をインストール
+# 依存関係のインストール
 npm install
 
-# 3. 環境変数を設定
+# 環境変数の設定
 cp .env.example .env.local
-# .env.localを編集してSupabase情報を追加
+# .env.localファイルを編集してAPIキーを設定
+```
 
-# 4. 開発サーバー起動
+### 開発サーバーの起動
+
+```bash
 npm run dev
 ```
 
-### 📋 初回セットアップ後のAI指示例
+ブラウザで http://localhost:3000 を開いてアクセスしてください。
+
+## 📁 プロジェクト構造
+
 ```
-このプロジェクトテンプレートを使って「[作りたいアプリ]」を開発します。
-Next.js + Supabase + Vercel構成で、すぐに開発を始められます。
-まずは基本的な画面から作成してください。
+careplan_assist/
+├── app/                      # Next.js App Router
+│   ├── support-plan/        # 支援計画書作成ページ
+│   │   ├── page.tsx        # メイン作成画面
+│   │   ├── list/          # 一覧画面
+│   │   └── edit/[id]/     # 編集画面
+│   └── layout.tsx          # 共通レイアウト
+├── support-plan-module/     # 支援計画書コアモジュール
+│   ├── src/
+│   │   ├── core/          # コアビジネスロジック
+│   │   ├── adapters/      # AI・ストレージアダプター
+│   │   └── templates/     # 計画書テンプレート
+│   └── README.md
+├── docs/                    # ドキュメント
+└── public/                  # 静的ファイル
 ```
 
-### 📂 従来の方法（フォルダコピー）
-1. このテンプレートをコピー
-2. AIエディターで開く
-3. 上記のAI指示例を実行
+## 🔧 技術スタック
 
-## 🎯 対象ユーザー
-- プログラミング初心者
-- AI駆動開発を始めたい方
-- 効率的に開発を進めたい方
+- **フレームワーク**: Next.js 14 (App Router)
+- **言語**: TypeScript
+- **スタイリング**: Tailwind CSS
+- **AI統合**: Google Generative AI (Gemini)
+- **データ管理**: ローカルストレージ（プライバシーファースト）
 
-## 📚 詳細ガイド
-- [環境構築ガイド](docs/01-getting-started/ENVIRONMENT_SETUP.md) 🌟 統合版！
-- [プロジェクトの始め方](START_HERE.md)
-- [開発ガイド](docs/02-development/)
+## 📚 ドキュメント
 
-## 🤖 AI開発者向け
-- [CLAUDE.md](CLAUDE.md) - AI開発の基本ルール
-- [.ai-guide.md.example](.ai-guide.md.example) - プロジェクト固有ルール（テンプレート）
-- [AI_RULES.md.example](AI_RULES.md.example) - 詳細実装ルール（テンプレート）
+詳細なドキュメントは `docs/` ディレクトリを参照してください：
 
-## 🔐 セキュリティ機能
-- [セキュリティガイド](docs/03-security/) - 段階的なセキュリティ実装
-- [AI安全運用ガイド](docs/03-security/05-AI安全運用ガイド.md) - permissions.deny設定
+- [開発ガイド](docs/02-development/README.md)
+- [APIキー設定ガイド](docs/01-getting-started/06-APIキー設定ガイド.md)
+- [トラブルシューティング](docs/05-troubleshooting/README.md)
 
-## 💬 質問・相談大歓迎！
+## 🛡️ セキュリティとプライバシー
 
-プログラミングが初めての方も安心してください。
-- どんな小さな疑問でもOK
-- 「こんなこと聞いていいの？」と思うことほど大切
-- あなたの質問がこのシステムをより良くします
+- すべてのデータはローカルに保存（クラウド送信なし）
+- AI分析時のみAPIを使用（オプション）
+- 個人情報の自動マスキング機能
 
-**よくある質問：**
-- 「GitHubって何？」
-- 「エラーが怖い...」
-- 「どこから始めればいい？」
+## 🤝 貢献方法
 
-→ 全部、AIが優しく教えてくれます！
+1. このリポジトリをフォーク
+2. 機能ブランチを作成 (`git checkout -b feature/amazing-feature`)
+3. 変更をコミット (`git commit -m 'Add amazing feature'`)
+4. ブランチをプッシュ (`git push origin feature/amazing-feature`)
+5. プルリクエストを作成
+
+## 📄 ライセンス
+
+このプロジェクトはMITライセンスの下で公開されています。詳細は[LICENSE](LICENSE)ファイルを参照してください。
+
+## 📞 サポート
+
+問題や質問がある場合は、[Issues](https://github.com/kotashimizu/careplan_assist/issues)でお知らせください。
